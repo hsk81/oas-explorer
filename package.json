@@ -1,0 +1,81 @@
+{
+  "author": {
+    "email": "hasan.karahan@blackhan.com",
+    "name": "Hasan Karahan",
+    "url": "https://github.com/hsk81"
+  },
+  "config": {
+    "forge": {
+      "make_targets": {
+        "win32": [
+          "squirrel",
+          "zip"
+        ],
+        "darwin": [
+          "dmg",
+          "zip"
+        ],
+        "linux": [
+          "zip"
+        ]
+      },
+      "electronPackagerConfig": {
+        "icon": "./assets/icons/api-2#016eaa4f7069c01b91bd21b68170d84e/img/128x128.icns",
+        "packageManager": "npm"
+      },
+      "electronWinstallerConfig": {
+        "name": "api_explorer"
+      },
+      "electronInstallerDebian": {},
+      "electronInstallerRedhat": {},
+      "github_repository": {
+        "owner": "hsk81",
+        "name": "api-explorer"
+      },
+      "windowsStoreConfig": {
+        "packageName": "",
+        "name": "apiexplorer"
+      }
+    }
+  },
+  "dependencies": {
+    "electron-compile": "^6.4.4",
+    "electron-squirrel-startup": "^1.0.0",
+    "jwt-decode": "^2.2.0",
+    "lodash": "^4.17.11",
+    "request": "^2.88.0",
+    "yargs": "^12.0.5"
+  },
+  "description": "API Explorer",
+  "devDependencies": {
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "electron-forge": "^5.2.4",
+    "electron-prebuilt-compile": "4.0.0",
+    "eslint": "^3.19.0",
+    "eslint-config-airbnb": "^15.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^5.1.1",
+    "eslint-plugin-react": "^7.12.4"
+  },
+  "keywords": [
+    "api",
+    "explorer"
+  ],
+  "license": "GPL",
+  "main": "./src/main/main.js",
+  "name": "api-explorer",
+  "productName": "API Explorer",
+  "repository": {
+    "url": "https://github.com/hsk81/api-explorer.git"
+  },
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make",
+    "publish": "electron-forge publish",
+    "lint": "eslint src --color"
+  },
+  "version": "1.0.0"
+}
