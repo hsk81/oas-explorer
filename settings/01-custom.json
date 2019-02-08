@@ -1,0 +1,30 @@
+{
+    "auth0": {
+        "api_identifier": "${MY_AUTH0_AUDIENCE}",
+        "client_id": "${MY_AUTH0_CLIENT_ID}",
+        "domain": "${MY_AUTH0_DOMAIN}",
+        "prompt": "login",
+        "scopes": [
+            "${MY_API_SCOPE(s)}"
+        ],
+        "redirect_uri": "file:///callback"
+    },
+    "menu": {
+        "help": {
+            "community_url":
+                "${MY_COMMUNITY_URL}",
+            "documentation_url":
+                "${MY_DOCUMENTATION_URL}",
+            "learnmore_url":
+                "${MY_LEARNMORE_URL}",
+            "issues_url":
+                "${MY_ISSUES_URL}"
+        }
+    },
+    "oas": {
+        "servers": [
+            "${MY_API_SERVER(s)}"
+        ],
+        "url": "${MY_DEFAULT_OAS_URL}"
+    }
+}
