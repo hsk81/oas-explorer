@@ -14,7 +14,6 @@ class AuthWindow {
   }
   async open(next) {
     this._window = new BrowserWindow({
-      autoHideMenuBar: true,
       devTools: false,
       center: true,
       height: 600,
@@ -27,16 +26,15 @@ class AuthWindow {
       },
       width: 372
     });
-    this._window.loadURL(await getAuthorizationUrl());
     const { session: { webRequest } } = this._window.webContents;
     const filter = { urls: [`${auth0.redirect_uri}*`] };
     webRequest.onBeforeRequest(filter, async ({ url }) => {
-      const aquired = await requestTokens(url);
+      const acquired = await requestTokens(url);
       setAuthorizationUrl({
-        prompt: aquired ? 'none' : 'login'
+        prompt: acquired ? 'none' : 'login'
       }).then(() => {
         if (typeof next === 'function') {
-          next(aquired);
+          next(acquired);
         }
         this.close();
       });
@@ -51,7 +49,9 @@ class AuthWindow {
     this._window.on('closed', () => {
       this._window = null;
     });
+    this._window.setMenuBarVisibility(false);
     // this._window.webContents.openDevTools();
+    this._window.loadURL(await getAuthorizationUrl());
   }
   close() {
     if (this._window) {
