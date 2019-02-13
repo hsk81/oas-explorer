@@ -1,6 +1,9 @@
 # API Explorer
 
-A user interface to explore [OpenApi specifications][0] (OAS) with support for OAUTH2 via [Auth0.com][1].
+A user interface to explore [OpenApi specifications][0] (OAS) with support for OAUTH2 via [Auth0.com][1]. For example:
+
+![Auth0 Login](./assets/images/auth0-login.png)
+![OAS Editor](./assets/images/oas-editor.png)
 
 ## Installation
 
@@ -17,33 +20,46 @@ In `settings/01-custom.json` replace all configuration values starting with `${M
 ```javascript
 "auth0": {
 ```
+
 > your unique ID of the target API you want to access:
+
 ```javascript
     "api_identifier": "${MY_AUTH0_AUDIENCE}", // e.g. "https://api.custom.tld/"
 ```
+
 > your application's ID:
+
 ```javascript
     "client_id": "${MY_AUTH0_CLIENT_ID}", // e.g. "00000000...00000000"
 ```
+
 > your Auth0 domain:
+
 ```javascript
     "domain": "${MY_AUTH0_DOMAIN}", // e.g. "custom.auth0.com"
 ```
+
 > silent (`none`) or explicit (`login`) authentication:
+
 ```javascript
     "prompt": "login",
 ```
+
 > scopes which you want to request authorization for:
+
 ```javascript
     "scopes": [
         // e.g. "a:scope", "another:scope", "yet-another:scope"
         "openid", "profile", "offline_access", "${MY_API_SCOPE(s)}"
     ],
 ```
+
 > URL to which Auth0 will redirect to:
+
 ```javascript
     "redirect_uri": "file:///callback"
 ```
+
 ```javascript
 }
 ```
@@ -53,20 +69,31 @@ In `settings/01-custom.json` replace all configuration values starting with `${M
 ```javascript
 "oas": {
 ```
+
 > list of allowed API servers (with regex support):
+
 ```javascript
     "servers": [
         "${MY_API_SERVER(s)}", // e.g. "^https://(.+)\\.custom\\.tld"
         "^http(s?)://localhost:8000"
     ],
 ```
+
 > URL to fetch the default OpenApi specification from:
+
 ```javascript
     // e.g. "https://api.custom.tld/oas/openapi@latest.yaml"
     "url": "${MY_DEFAULT_OAS_URL}"
 ```
+
 ```javascript
 }
+```
+
+## Packaging
+
+```sh
+npm run make
 ```
 
 ## Execution
@@ -117,6 +144,16 @@ npm run -- start -- --json ./settings/01-custom.json \
     --auth0.scopes=get:my-scope post:my-scope \
     --oas.servers="^https://(.+).custom.tld" \
     --oas.servers="^http://localhost:8000"
+```
+
+## FAQ
+
+### Why do I get an `invalid token error`?
+
+This might be due to a left-over token, which has not been cleaned-up correctly. Simply delete the corresponding `MY_AUTH0_DOMAIN` folder in your temporary directory, e.g. on Linux for `MY_AUTH0_DOMAIN` equalling to `percim.eu.auth0.com` you would need to run:
+
+```sh
+rm /tmp/percim.eu.auth0.com/ -r
 ```
 
 [0]: https://www.openapis.org
