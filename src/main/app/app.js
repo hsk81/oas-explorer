@@ -35,8 +35,8 @@ class App {
         this._app_window = new AppWindow();
         this.setMenu(this._app_window);
       } else {
-        this._auth_window = new AuthWindow((aquired) => {
-          if (aquired) {
+        this._auth_window = new AuthWindow((acquired) => {
+          if (acquired) {
             this._app_window = new AppWindow();
             this.setMenu(this._app_window);
           } else {
