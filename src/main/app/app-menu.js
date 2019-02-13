@@ -130,7 +130,7 @@ class AppMenu {
         submenu: [
           {
             click() {
-              shell.openExternal(menu.help.learnmore_url);
+              shell.openExternal(menu.help.learn_more_url);
             },
             label: 'Learn More'
           },

@@ -15,8 +15,8 @@
                 "${MY_COMMUNITY_URL}",
             "documentation_url":
                 "${MY_DOCUMENTATION_URL}",
-            "learnmore_url":
-                "${MY_LEARNMORE_URL}",
+            "learn_more_url":
+                "${MY_LEARN_MORE_URL}",
             "issues_url":
                 "${MY_ISSUES_URL}"
         }
