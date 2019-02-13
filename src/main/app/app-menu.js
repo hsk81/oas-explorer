@@ -13,7 +13,7 @@ class AppMenu {
         label: 'API Explorer',
         submenu: [
           {
-            accelerator: 'CommandOrControl+Shift+I',
+            accelerator: 'CommandOrControl+I',
             click() {
               app_window.run('editor-import');
             },
@@ -109,7 +109,7 @@ class AppMenu {
           { type: 'separator' },
           { registerAccelerator: true, role: 'reload' },
           { registerAccelerator: true, role: 'forcereload' },
-          // { registerAccelerator: true, role: 'toggledevtools' },
+          { registerAccelerator: true, role: 'toggledevtools' },
           { type: 'separator' },
           { registerAccelerator: true, role: 'resetzoom' },
           { registerAccelerator: true, role: 'zoomin' },
