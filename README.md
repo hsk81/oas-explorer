@@ -13,7 +13,7 @@ npm install
 
 ## Configuration
 
-In `settings/01-custom.json` replace all configuration values starting with `${MY_...}` — to fully understand each field please consult [auth0.com/docs/api/authentication#authorize-application][2].
+Copy `settings/00-default.json` to `settings/01-custom.json` and replace all configuration values starting with `${MY_...}` — to fully understand each field please consult [auth0.com/docs/api/authentication#authorize-application][2]. Please note, that multiple configuration files will be merged in lexicographical order.
 
 ### Auth0: authentication & authorization
 
@@ -112,26 +112,33 @@ npm start
 
 ## CLI Arguments
 
-It's also possible to provide a configuration file and/or arguments via the command line interface:
+It's also possible to provide a configuration file and/or arguments via the command line interface. Further, environment variables are also recognized (where the values need to be JSON encoded). The precedence order is given as:
+
+* CLI arguments, then
+* environment variables, and finally
+* configuration files,
+
+where the CLI arguments have the highest precedence, while the configuration files have the least.
 
 #### debugging:
 
 ```sh
-npm run -- start -- --json ./settings/01-custom.json
+AUTH0_PROMPT='"login"' npm run -- start -- --json ./settings/01-custom.json
 ```
 
 #### production:
 
 ```sh
-./api-explorer --json ./resources/app/settings/01-custom.json
+AUTH0_PROMPT='"login"' ./api-explorer --json ./resources/app/settings/01-custom.json
 ```
 
-where the location of the `*.json` configuration file can be anywhere, and is not just restricted to the path shown above, and further where each (even nested) configuration entry can be separately defined as well, for example:
+where the location of the `*.json` configuration can be anywhere, and is not just restricted to the path shown above, and further where each (even nested) configuration entry can be separately defined as well, for example:
 
 #### debugging:
 
 ```sh
 npm run -- start -- --json ./settings/01-custom.json \
+    --auth0.scopes=openid profile offline_access \
     --auth0.scopes=get:my-scope post:my-scope \
     --oas.servers="^https://(.+).custom.tld" \
     --oas.servers="^http://localhost:8000"
@@ -141,6 +148,7 @@ npm run -- start -- --json ./settings/01-custom.json \
 
 ```sh
 ./api-explorer --json ./resources/app/settings/01-custom.json \
+    --auth0.scopes=openid profile offline_access \
     --auth0.scopes=get:my-scope post:my-scope \
     --oas.servers="^https://(.+).custom.tld" \
     --oas.servers="^http://localhost:8000"
@@ -150,10 +158,10 @@ npm run -- start -- --json ./settings/01-custom.json \
 
 ### Why do I get an `invalid token error`?
 
-This might be due to a left-over token, which has not been cleaned-up correctly. Simply delete the corresponding `MY_AUTH0_DOMAIN` folder in your temporary directory, e.g. on Linux for `MY_AUTH0_DOMAIN` equalling to `percim.eu.auth0.com` you would need to run:
+This might be due to a left-over (access) token, which has not been removed correctly. Simply delete the corresponding `AUTH0_DOMAIN` folder in your temporary directory, e.g. on Linux for `AUTH0_DOMAIN` `=` `custom.auth0.com` run:
 
 ```sh
-rm /tmp/percim.eu.auth0.com/ -r
+rm /tmp/custom.auth0.com/ -r
 ```
 
 [0]: https://www.openapis.org

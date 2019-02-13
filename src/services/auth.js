@@ -17,7 +17,7 @@ const authorization_url = (new function () {
         `&prompt=${await this.prompt.get() || auth0.prompt}` +
         `&redirect_uri=${auth0.redirect_uri}` +
         `&response_type=code` +
-        `&scope=${auth0.scopes.join(' ')}`;
+        `&scope=${auth0.scopes.filter(s => s).join(' ')}`;
 
     this.set = async ({ prompt }) => {
         await this.prompt.set(prompt);
