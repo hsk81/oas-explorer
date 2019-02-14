@@ -13,7 +13,7 @@ npm install
 
 ## Configuration
 
-Copy `settings/00-default.json` to `settings/01-custom.json` and replace all configuration values starting with `${MY_...}` — to fully understand each field please consult [#authorize-application][2]. Please note, that multiple configuration files will be merged in lexicographical order.
+Copy `settings/00-default.json` to `settings/01-custom.json` and replace all configuration values starting with `${APX_..}` — to fully understand each field consult [#authorize-application][2]. Please note, that multiple configuration files will be merged in lexicographical order.
 
 ### Auth0: authentication & authorization
 
@@ -24,19 +24,19 @@ Copy `settings/00-default.json` to `settings/01-custom.json` and replace all con
 > your unique ID of the target API you want to access:
 
 ```javascript
-    "api_identifier": "${MY_AUTH0_AUDIENCE}", // e.g. "https://api.custom.tld/"
+    "api_identifier": "${APX_AUTH0_AUDIENCE}", // e.g. "https://api.custom.tld/"
 ```
 
 > your application's ID:
 
 ```javascript
-    "client_id": "${MY_AUTH0_CLIENT_ID}", // e.g. "00000000...00000000"
+    "client_id": "${APX_AUTH0_CLIENT_ID}", // e.g. "00000000...00000000"
 ```
 
 > your Auth0 domain:
 
 ```javascript
-    "domain": "${MY_AUTH0_DOMAIN}", // e.g. "custom.auth0.com"
+    "domain": "${APX_AUTH0_DOMAIN}", // e.g. "custom.auth0.com"
 ```
 
 > silent (`none`) or explicit (`login`) authentication:
@@ -50,7 +50,7 @@ Copy `settings/00-default.json` to `settings/01-custom.json` and replace all con
 ```javascript
     "scopes": [
         // e.g. "a:scope", "another:scope", "yet-another:scope"
-        "openid", "profile", "offline_access", "${MY_API_SCOPE(s)}"
+        "openid", "profile", "offline_access", "${APX_API_SCOPES}"
     ],
 ```
 
@@ -74,8 +74,8 @@ Copy `settings/00-default.json` to `settings/01-custom.json` and replace all con
 
 ```javascript
     "servers": [
-        "${MY_API_SERVER(s)}", // e.g. "^https://(.+)\\.custom\\.tld"
-        "^http(s?)://localhost:8000"
+        // e.g. "^https://(.+)\\.custom\\.tld"
+        "${APX_OAS_SERVERS}"
     ],
 ```
 
@@ -83,7 +83,7 @@ Copy `settings/00-default.json` to `settings/01-custom.json` and replace all con
 
 ```javascript
     // e.g. "https://api.custom.tld/oas/openapi@latest.yaml"
-    "url": "${MY_DEFAULT_OAS_URL}"
+    "url": "${APX_OAS_URL}"
 ```
 
 ```javascript
@@ -123,13 +123,13 @@ where the CLI arguments have the highest precedence, while the configuration fil
 #### debugging:
 
 ```sh
-AUTH0_PROMPT='"login"' npm run -- start -- --json ./settings/01-custom.json
+APX_AUTH0_PROMPT='"login"' npm run -- start -- --json ./settings/01-custom.json
 ```
 
 #### production:
 
 ```sh
-AUTH0_PROMPT='"login"' ./api-explorer --json ./resources/app/settings/01-custom.json
+APX_AUTH0_PROMPT='"login"' ./api-explorer --json ./resources/app/settings/01-custom.json
 ```
 
 where the location of the `*.json` configuration can be anywhere, and is not just restricted to the path shown above, and further where each (even nested) configuration entry can be separately defined as well, for example:
