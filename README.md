@@ -13,7 +13,7 @@ npm install
 
 ## Configuration
 
-Copy `settings/00-default.json` to `settings/01-custom.json` and replace all configuration values starting with `${MY_...}` — to fully understand each field please consult [auth0.com/docs/api/authentication#authorize-application][2]. Please note, that multiple configuration files will be merged in lexicographical order.
+Copy `settings/00-default.json` to `settings/01-custom.json` and replace all configuration values starting with `${MY_...}` — to fully understand each field please consult [#authorize-application][2]. Please note, that multiple configuration files will be merged in lexicographical order.
 
 ### Auth0: authentication & authorization
 
