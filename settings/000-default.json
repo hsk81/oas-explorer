@@ -1,30 +1,30 @@
 {
     "auth0": {
-        "api_identifier": "${MY_AUTH0_AUDIENCE}",
-        "client_id": "${MY_AUTH0_CLIENT_ID}",
-        "domain": "${MY_AUTH0_DOMAIN}",
+        "api_identifier": "${APX_AUTH0_API_IDENTIFIER}",
+        "client_id": "${APX_AUTH0_CLIENT_ID}",
+        "domain": "${APX_AUTH0_DOMAIN}",
         "prompt": "login",
         "scopes": [
-            "${MY_API_SCOPE(s)}"
+            "${APX_SCOPES}"
         ],
         "redirect_uri": "file:///callback"
     },
     "menu": {
         "help": {
             "community_url":
-                "${MY_COMMUNITY_URL}",
+                "${APX_MENU_HELP_COMMUNITY_URL}",
             "documentation_url":
-                "${MY_DOCUMENTATION_URL}",
+                "${APX_MENU_HELP_DOCUMENTATION_URL}",
             "learn_more_url":
-                "${MY_LEARN_MORE_URL}",
+                "${APX_MENU_HELP_LEARN_MORE_URL}",
             "issues_url":
-                "${MY_ISSUES_URL}"
+                "${APX_MENU_HELP_ISSUES_URL}"
         }
     },
     "oas": {
         "servers": [
-            "${MY_API_SERVER(s)}"
+            "${APX_OAS_SERVERS}"
         ],
-        "url": "${MY_DEFAULT_OAS_URL}"
+        "url": "${APX_OAS_URL}"
     }
 }
