@@ -75,7 +75,8 @@
     "package": "electron-forge package",
     "make": "electron-forge make",
     "publish": "electron-forge publish",
-    "lint": "eslint src --color"
+    "lint": "eslint src --color",
+    "test": "exit 0"
   },
   "version": "1.0.1"
 }
