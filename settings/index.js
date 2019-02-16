@@ -63,7 +63,12 @@ const settings = merge(...json_list, args);
 if (settings_dbg) {
     walk(settings, 'APX')({
         key: (p, k) => `${p}_${k}`.toUpperCase(),
-        value: (p, k) => console.debug(`${p}=${k}`)
+        value: (p, v) => {
+            if (v !== undefined) console.debug(
+                `${p}=${JSON.stringify(v)}`
+            );
+            return v;
+        }
     });
 }
 module.exports = settings;

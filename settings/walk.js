@@ -6,13 +6,16 @@ const is_object
 const key_default
     = (p, k) => `${p}/${k}`;
 const value_default
-    = (p, k) => v;
+    = (p, v) => v;
 
 const walk = (any, path = "") => ({ key, value }) => {
     const get_key =
         key !== undefined ? key : key_default;
     const get_value =
         value !== undefined ? value : value_default;
+    if (path && get_value(path) !== undefined) {
+        return get_value(path);
+    }
     if (is_object(any)) {
         return Object.entries(any)
             .map(([k, v]) => [
