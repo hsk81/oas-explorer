@@ -5,10 +5,10 @@ os:
 - linux
 - osx
 - windows
+cache: npm
 env:
 - SETTINGS_SET=1
 before_deploy:
-- npm install
 - node -e "require('./settings')"
 - npm run make
 deploy:
