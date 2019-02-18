@@ -13,7 +13,7 @@ npm install
 
 ## Configuration
 
-Copy `settings/00-default.json` to `settings/01-custom.json` and replace all configuration values starting with `${APX_..}` — to fully understand each field consult [#authorize-application][2]. Please note, that multiple configuration files will be merged in lexicographical order.
+Copy `settings/000-default.json` to `settings/001-custom.json` and replace all configuration values starting with `${APX_..}` — to fully understand each field consult [#authorize-application][2]. Please note, that multiple configuration files will be merged in lexicographical order.
 
 ### Auth0: authentication & authorization
 
