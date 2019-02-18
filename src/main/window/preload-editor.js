@@ -8,10 +8,7 @@ const { readFile } = require('fs');
 const { writeFile } = require('fs');
 
 const ace_editor = () => {
-  if (window.ACE_EDITOR === undefined) {
-    window.ACE_EDITOR = ace.edit('ace-editor');
-  }
-  return window.ACE_EDITOR;
+  return ace.edit('ace-editor');
 };
 const dlg_filters = () => {
   const filter_yaml = {
