@@ -123,13 +123,13 @@ where the CLI arguments have the highest precedence, while the configuration fil
 #### debugging:
 
 ```sh
-APX_AUTH0_PROMPT='"login"' npm run -- start -- --json ./settings/01-custom.json
+APX_AUTH0_PROMPT='"login"' npm run -- start -- --json ./settings/001-custom.json
 ```
 
 #### production:
 
 ```sh
-APX_AUTH0_PROMPT='"login"' ./api-explorer --json ./resources/app/settings/01-custom.json
+APX_AUTH0_PROMPT='"login"' ./api-explorer --json ./resources/app/settings/001-custom.json
 ```
 
 where the location of the `*.json` configuration can be anywhere, and is not just restricted to the path shown above, and further where each (even nested) configuration entry can be separately defined as well, for example:
@@ -137,7 +137,7 @@ where the location of the `*.json` configuration can be anywhere, and is not jus
 #### debugging:
 
 ```sh
-npm run -- start -- --json ./settings/01-custom.json \
+npm run -- start -- --json ./settings/001-custom.json \
     --auth0.scopes=openid profile offline_access \
     --auth0.scopes=get:my-scope post:my-scope \
     --oas.servers="^https://(.+).custom.tld" \
@@ -147,7 +147,7 @@ npm run -- start -- --json ./settings/01-custom.json \
 #### production:
 
 ```sh
-./api-explorer --json ./resources/app/settings/01-custom.json \
+./api-explorer --json ./resources/app/settings/001-custom.json \
     --auth0.scopes=openid profile offline_access \
     --auth0.scopes=get:my-scope post:my-scope \
     --oas.servers="^https://(.+).custom.tld" \
