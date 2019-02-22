@@ -14,7 +14,7 @@ before_deploy:
 deploy:
   provider: releases
   api_key:
-    secure: $GITHUB_DEPLOY_TOKEN
+    secure: hkQYjXILsCUGXoU88Ui4J92qCpP1xqMXoxiB30wM2aKwVidzWcfz45gTjHTMOeaKRGmlbmHHXM2j9BwKzrUOttX2GjB2hsZgp205ioN0pMGzn91tcu/2ChKm9JmWJQKXjAYxlzo9M7sZg6698grNaknrAIRS9zTnx1i3b2pZcWGbj6yTldlcSZHjVWiMr7B0PKygrdtUtzDX2gl0gt6waoPM87Dw2mBldYYJFSW+haSLTFt4Ozd35Mk7mPQi971agAvp0dQugFB7S/fztklDrMTzcCf4BSSUwmEp6jGfLwcCoRsuWIsYIN1a8wOi42Rc4JXryDNPute8AtO9LnixvxSOX5NewUWsmuf2EUD3ZsrMymr9KLnMMiojlxsmx9Z8LxsJy3cNAKjVXCGVXMbIBLCovoRHoy7OjDuNo2PT8mv9x27SDaOkbxGmR/7ryQFGpcbzyuClkk8TEniAJUT5SY1c1rRiT6RHeoz35xEjSQEcsp6wBKWcQxjKfdflRXUuD2vNpSnEsMeViYWexCo5N3HcgSYlvu53+BZCDS2vKz50fnleB2+K9huqmp8rINdx3B6V++lyH7kWmwlzjJcc0/6cduJJH/hldiZ7BHsAKN2FxxTZIu3WxAv01tW9iC3NhdGWdTpgXcghCbgZ2JyYb/jZfyYP/OsQGx+PCp5ekJk=
   file_glob: true
   file:
     - "./out/make/**/*"
