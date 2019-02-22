@@ -162,7 +162,7 @@ class AppMenu {
         ]
       }
     ];
-    if (process.platform === 'darwin' || true) {
+    if (process.platform === 'darwin') {
       // explorer menu
       template.unshift({
         label: 'API Explorer',
