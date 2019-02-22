@@ -14,12 +14,12 @@ before_deploy:
 deploy:
   provider: releases
   api_key:
-    secure: RM5gDyh/URTgl4whbu7Qfbd4VTGxLln7sPsJchPfqMSihR1rM35A2YHOntqDGzR7nNDc1rwacZaS8lyb3HtbtLHBa5V9IkctgdZpO7IKAeaTeRBjFiWbSEdWaNRSiIYCmgZOjWOvweKSDC7TNnDAhvRsGdEN8vCtdvnL6oWd9nkyixAwr8GI6XsS/PsKjymPYLpBDieJweo5+jCuuKSfN+Si2Z1rAowtBaXaKI5rA7DrYweMoz7tQgVWsr5rM/1P4839SjnzpHpzdIYtxlH4niUpKCsxAi4TZkMf47e/oGTjjzJbSe5LkOYf5WF8cTfkkoNyfvku7N2NAabEH8NKwxm48XuNDnE7TDNVpB7N7XM2Sgb+v2lmwUrhn/oulvCKRNmelYTz8JCNAjdKPQHDxfVpKC8Gz9szoMAlT6YSt4i00N4JuZNF5S1BcGc9kboofVKdseThQFa45ZCgWRRvbLK0DsIV/A1IH9TEpKFGvB40LAp0X8nLwa0/6lhQRG2UJb/4h5grfpyCGBWmCZXFWqF/K7TLF2KWWNcHt6W8tVvnEbsPsaUnoVWq+ISoA3x87OgUbJmNGqZqtEEynjsBvVN7N7cbTxzG/NW4qqq1pJ3HkaURVasqy4Ewqh8ttLr+5lrhHnCw9jc2wsKPtzLJP7GA8lxSC39/fY/AccmeBlA=
+    secure: $GITHUB_DEPLOY_TOKEN
   file_glob: true
   file:
     - "./out/make/**/*"
   skip_cleanup: true
   draft: true
   on:
-    condition: $TRAVIS_DEPLOY =~ github
+    condition: $GITHUB_DEPLOY =~ ^true$
     tags: true
