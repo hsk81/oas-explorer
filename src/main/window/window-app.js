@@ -10,7 +10,6 @@ class AppWindow {
   }
   open() {
     this._window = new BrowserWindow({
-      autoHideMenuBar: true,
       devTools: false,
       height: 640,
       icon: icon.png,
