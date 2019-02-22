@@ -10,7 +10,7 @@ class AppMenu {
   template(app_window) {
     const template = [
       {
-        label: 'API Explorer',
+        label: 'File',
         submenu: [
           {
             accelerator: 'CommandOrControl+I',
@@ -162,8 +162,9 @@ class AppMenu {
         ]
       }
     ];
-    if (process.platform === 'darwin') {
-      template[0] = { // explorer menu
+    if (process.platform === 'darwin' || true) {
+      // explorer menu
+      template.unshift({
         label: 'API Explorer',
         submenu: [
           { registerAccelerator: true, role: 'about' },
@@ -174,10 +175,21 @@ class AppMenu {
           { registerAccelerator: true, role: 'hideothers' },
           { registerAccelerator: true, role: 'unhide' },
           { type: 'separator' },
+          {
+            accelerator: 'CommandOrControl+Shift+Q',
+            click() {
+              app_window.run('app-logout');
+            },
+            label: 'Logout',
+            registerAccelerator: true
+          },
           { registerAccelerator: true, role: 'quit' }
         ]
-      };
-      template[3].submenu = [ // window menu
+      });
+      // file menu
+      template[1].submenu.splice(-3,3);
+      // window menu
+      template[4].submenu = [
         { registerAccelerator: true, role: 'close' },
         { registerAccelerator: true, role: 'minimize' },
         { registerAccelerator: true, role: 'zoom' },
