@@ -70,7 +70,7 @@ const on_open = (ev, ...args) => {
       readFile(filepaths[0], 'utf8', (error, text) => {
         if (!error) {
           storage.set('oas-url', `file://${filepaths[0]}`);
-          ace_editor().setValue(text);
+          ace_editor().setValue(text, -1);
         }
       });
     }
@@ -119,7 +119,7 @@ const on_import = (ev, ...args) => {
           return res.text();
         }).then((text) => {
           storage.set('oas-url', url || oas.url);
-          ace_editor().setValue(text);
+          ace_editor().setValue(text, -1);
         });
       }
     },
@@ -132,7 +132,7 @@ const on_reset = (ev, ...args) => {
   fetch(storage.get('oas-url') || oas.url).then((res) => {
     return res.text();
   }).then((text) => {
-    ace_editor().setValue(text);
+    ace_editor().setValue(text, -1);
   });
 };
 
