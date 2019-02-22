@@ -21,5 +21,5 @@ deploy:
   skip_cleanup: true
   draft: true
   on:
-    condition: $TRAVIS_TAG =~ ^v([0-9]+).([0-9]+).([0-9]+)-(.+)$
+    condition: $TRAVIS_DEPLOY =~ github
     tags: true
