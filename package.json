@@ -78,5 +78,5 @@
     "lint": "eslint src --color",
     "test": "exit 0"
   },
-  "version": "1.0.12"
+  "version": "1.0.13"
 }
