@@ -32,6 +32,21 @@ const dlg_filters = () => {
   }
   return filters;
 };
+const to_data = (yaml, filepath) => {
+  const to_json_data = (yaml) => {
+    return new Uint8Array(Buffer.from(JSON.stringify(
+      require('js-yaml').safeLoad(yaml, { json: true }), null, 2
+    )));
+  };
+  const to_yaml_data = (yaml) => {
+    return new Uint8Array(Buffer.from(
+      yaml
+    ));
+  };
+  return /\.json$/.test(filepath)
+    ? to_json_data(yaml)
+    : to_yaml_data(yaml);
+};
 
 const on_toggle = (ev, ...args) => {
   const pane_1 = document.getElementsByClassName('Pane1')[0];
@@ -83,12 +98,11 @@ const on_save_as = (ev, ...args) => {
     filters: dlg_filters()
   }, (filepath) => {
     if (filepath) {
-      const data = new Uint8Array(Buffer.from(
-        ace_editor().getValue()
-      ));
       if (/^file:\/\//.test(filepath)) {
         filepath = filepath.slice(7);
       }
+      const yaml = ace_editor().getValue();
+      const data = to_data(yaml, filepath);
       writeFile(filepath, data, (error) => {
         if (!error) {
           storage.set('oas-url', `file://${filepath}`);
@@ -100,13 +114,12 @@ const on_save_as = (ev, ...args) => {
   });
 };
 const on_save = (ev, ...args) => {
-  const data = new Uint8Array(Buffer.from(
-    ace_editor().getValue()
-  ));
   let filepath = storage.get('oas-url');
   if (/^file:\/\//.test(filepath)) {
     filepath = filepath.slice(7);
   }
+  const yaml = ace_editor().getValue();
+  const data = to_data(yaml, filepath);
   writeFile(filepath, data, (error) => {
     if (error) on_save_as(ev, ...args);
   });
