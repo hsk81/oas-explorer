@@ -45,7 +45,7 @@
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.15",
     "request": "^2.88.0",
-    "yargs": "^14.0.0"
+    "yargs": "^15.0.2"
   },
   "description": "API Explorer",
   "devDependencies": {
@@ -56,11 +56,11 @@
     "constantinople": "^4.0.1",
     "electron-forge": "^5.2.4",
     "electron-prebuilt-compile": "4.0.0",
-    "eslint": "^6.4.0",
+    "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.0.1",
-    "eslint-plugin-import": "^2.18.2",
+    "eslint-plugin-import": "^2.19.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
-    "eslint-plugin-react": "^7.14.3"
+    "eslint-plugin-react": "^7.17.0"
   },
   "keywords": [
     "api",
