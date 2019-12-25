@@ -1,4 +1,4 @@
-# API Explorer
+# OAS API Explorer
 
 A user interface to explore [OpenApi specifications][0] (OAS) with support for OAUTH2 via [Auth0.com][1]. For example:
 
