@@ -1,0 +1,26 @@
+language: node_js
+matrix:
+  include:
+    - os: linux
+    - os: osx
+    - os: windows
+node_js:
+- lts/*
+cache: npm
+env:
+- SETTINGS_SET=1
+before_deploy:
+- node -e "require('./settings')"
+- npm install macos-alias || true
+- npm run make
+deploy:
+  provider: releases
+  api_key: $GITHUB_DEPLOY_TOKEN
+  file_glob: true
+  file:
+    - "./out/make/**/*"
+  skip_cleanup: true
+  draft: true
+  on:
+    condition: $GITHUB_DEPLOY
+    tags: true

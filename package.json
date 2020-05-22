@@ -1,58 +1,62 @@
 {
-  "name": "apx",
-  "productName": "apx",
-  "version": "1.0.0",
-  "description": "My Electron application description",
-  "main": "src/index.js",
-  "scripts": {
-    "start": "electron-forge start",
-    "package": "electron-forge package",
-    "make": "electron-forge make",
-    "publish": "electron-forge publish",
-    "lint": "echo \"No linting configured\""
-  },
-  "keywords": [],
   "author": {
+    "email": "hasan.karahan@blackhan.com",
     "name": "Hasan Karahan",
-    "email": "hasan.karahan@blackhan.com"
+    "url": "https://github.com/hsk81"
   },
-  "license": "MIT",
   "config": {
     "forge": {
-      "packagerConfig": {},
       "makers": [
         {
-          "name": "@electron-forge/maker-squirrel",
+          "name": "@electron-forge/maker-dmg"
+        },
+        {
           "config": {
-            "name": "apx"
-          }
+            "name": "api-explorer"
+          },
+          "name": "@electron-forge/maker-squirrel"
         },
         {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {}
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {}
+          "name": "@electron-forge/maker-zip"
         }
-      ]
+      ],
+      "packagerConfig": {
+        "icon": "./assets/icons/api-2#016eaa4f7069c01b91bd21b68170d84e/img/128x128.icns"
+      }
     }
   },
   "dependencies": {
-    "electron-squirrel-startup": "^1.0.0"
+    "electron-squirrel-startup": "^1.0.0",
+    "js-yaml": "^3.13.1",
+    "jwt-decode": "^2.2.0",
+    "lodash": "^4.17.15",
+    "request": "^2.88.2",
+    "yargs": "^15.3.1"
   },
+  "description": "API Explorer",
   "devDependencies": {
     "@electron-forge/cli": "^6.0.0-beta.51",
-    "@electron-forge/maker-deb": "^6.0.0-beta.51",
-    "@electron-forge/maker-rpm": "^6.0.0-beta.51",
+    "@electron-forge/maker-dmg": "^6.0.0-beta.51",
     "@electron-forge/maker-squirrel": "^6.0.0-beta.51",
     "@electron-forge/maker-zip": "^6.0.0-beta.51",
-    "electron": "9.0.0"
-  }
+    "electron": "9.0.0",
+    "eslint": "^7.0.0"
+  },
+  "keywords": [
+    "api",
+    "explorer"
+  ],
+  "license": "GPL",
+  "main": "./src/main/main.js",
+  "name": "api-explorer",
+  "productName": "API Explorer",
+  "scripts": {
+    "lint": "eslint src --color",
+    "make": "electron-forge make",
+    "package": "electron-forge package",
+    "publish": "electron-forge publish",
+    "start": "electron-forge start",
+    "test": "exit 0"
+  },
+  "version": "0.0.0"
 }

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta http-equiv="Content-Security-Policy"
+        content="default-src data: blob: filesystem: 'self' 'unsafe-inline' 'unsafe-eval' *">
+  <meta charset="UTF-8">
+  <title>API Explorer</title>
+  <link href="./dist/vex.css" rel="stylesheet" />
+  <link href="./dist/vex-theme-top.css" rel="stylesheet" />
+  <link href="./dist/editor-inline.min.css" rel="stylesheet" />
+  <link href="./dist/editor.min.css" rel="stylesheet" />
+</head>
+
+<body>
+  <div id="swagger-editor"></div>
+  <script src="./dist/editor-bundle.min.js"></script>
+  <script src="./dist/editor-standalone-preset.min.js"></script>
+  <script>
+    window.onload = function () {
+      const hide_editor_pane = () => {
+        const $pane1 = document.getElementsByClassName('Pane1')[0];
+        $pane1.hidden = true;
+        const $pane2 = document.getElementsByClassName('Pane2')[0];
+        $pane2.style.width = '100%';
+      };
+      const swagger_editor = () => SwaggerEditorBundle({
+        dom_id: '#swagger-editor',
+        layout: 'StandaloneLayout',
+        presets: [
+          SwaggerEditorStandalonePreset
+        ]
+      });
+      const content = localStorage.getItem('swagger-editor-content');
+      if (!content) {
+        let oas_url = localStorage.getItem('oas-url') || window.OAS_URL;
+        fetch(oas_url).then((res) => res.text()).then((text) => {
+          if (!text) {
+            oas_url = window.OAS_URL;
+          }
+          return text ? text : fetch(oas_url).then((res) => res.text());
+        }).then((text) => {
+          localStorage.setItem('swagger-editor-content', text || '#');
+          localStorage.setItem('oas-url', oas_url);
+        }).then(() => {
+          window.SWAGGER_EDITOR = swagger_editor();
+          hide_editor_pane();
+        });
+      } else {
+        window.SWAGGER_EDITOR = swagger_editor();
+        hide_editor_pane();
+      }
+    };
+  </script>
+  <link href="./dist/editor-patch.min.css" rel="stylesheet">
+  <script src="./dist/vex.combined.min.js"></script>
+  <script>vex.defaultOptions.className = 'vex-theme-top'</script>
+</body>
+
+</html>

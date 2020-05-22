@@ -1,3 +1,7 @@
+# Environ
+settings/???-*.json
+out/
+
 # Logs
 logs
 *.log
