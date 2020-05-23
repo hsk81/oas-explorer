@@ -50,6 +50,9 @@
   "main": "./src/main/main.js",
   "name": "api-explorer",
   "productName": "API Explorer",
+  "repository": {
+    "url": "https://github.com/hsk81/oas-explorer.git"
+  },
   "scripts": {
     "lint": "eslint src --color",
     "make": "electron-forge make",
