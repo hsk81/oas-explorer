@@ -8,12 +8,12 @@
     "forge": {
       "makers": [
         {
+          "config": {
+            "icon": "./assets/icons/api-2#016eaa4f7069c01b91bd21b68170d84e/img/128x128.icns"
+          },
           "name": "@electron-forge/maker-dmg"
         },
         {
-          "config": {
-            "name": "api-explorer"
-          },
           "name": "@electron-forge/maker-squirrel"
         },
         {
@@ -21,7 +21,7 @@
         }
       ],
       "packagerConfig": {
-        "icon": "./assets/icons/api-2#016eaa4f7069c01b91bd21b68170d84e/img/128x128.icns"
+        "icon": "./assets/icons/api-2#016eaa4f7069c01b91bd21b68170d84e/img/128x128"
       }
     }
   },
@@ -61,5 +61,5 @@
     "start": "electron-forge start",
     "test": "exit 0"
   },
-  "version": "1.0.2"
+  "version": "1.0.1"
 }
