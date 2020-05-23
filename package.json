@@ -27,7 +27,7 @@
   },
   "dependencies": {
     "electron-squirrel-startup": "^1.0.0",
-    "js-yaml": "^3.13.1",
+    "js-yaml": "^3.14.0",
     "jwt-decode": "^2.2.0",
     "lodash": "^4.17.15",
     "request": "^2.88.2",
@@ -40,7 +40,7 @@
     "@electron-forge/maker-squirrel": "^6.0.0-beta.51",
     "@electron-forge/maker-zip": "^6.0.0-beta.51",
     "electron": "9.0.0",
-    "eslint": "^7.0.0"
+    "eslint": "^7.1.0"
   },
   "keywords": [
     "api",
