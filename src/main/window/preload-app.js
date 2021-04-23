@@ -1,8 +1,7 @@
 const { setAuthorizationUrl } = require('../../services/auth');
-const { ipcRenderer, remote } = require('electron');
+const { app, ipcRenderer } = require('electron');
 const pkg = require('../../../package.json');
 
-const { app } = remote;
 const { versions } = require('process');
 const { kebabCase } = require('lodash');
 

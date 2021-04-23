@@ -1,8 +1,7 @@
 const { storage } = require('./preload-storage');
 const { oas } = require('../../../settings');
 const { ipcRenderer } = require('electron');
-const { remote } = require('electron');
-const { dialog } = remote;
+const { dialog } = require('electron');
 
 const { readFile } = require('fs');
 const { writeFile } = require('fs');

@@ -1,4 +1,4 @@
-const { app } = require('electron');
+const { app, ipcMain } = require('electron');
 const { AppMenu } = require('./app-menu');
 const { AppWindow } = require('../window/window');
 const { AuthWindow } = require('../window/window');
@@ -12,10 +12,11 @@ class App {
       return app.quit();
     }
     app.on('activate', this.onActivate.bind(this));
+    app.on('window-all-closed', this.onAllClosed.bind(this));
     app.once('before-quit', this.onBeforeQuit.bind(this));
     app.on('ready', this.onReady.bind(this));
-    app.on('window-all-closed', this.onAllClosed.bind(this));
     app.setName(productName);
+    ipcMain.on('app-title', this.onTitle.bind(this));
   }
   onActivate() {
     if (this._app_window.closed) {
@@ -48,6 +49,9 @@ class App {
         });
       }
     });
+  }
+  onTitle(ev, ...args) {
+    this._app_window.title = args[0];
   }
   setMenu(app_window) {
     this._menu = new AppMenu();

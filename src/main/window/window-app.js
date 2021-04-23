@@ -66,9 +66,12 @@ class AppWindow {
     }
   }
   get closed() {
-    return this._window
-      ? this._window.closed
-      : true;
+    return this._window ? this._window.closed : true;
+  }
+  set title(value) {
+    if (this._window) {
+      this._window.setTitle(value);
+    }
   }
 }
 module.exports = {
