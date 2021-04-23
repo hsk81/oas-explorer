@@ -1,5 +1,5 @@
 language: node_js
-matrix:
+jobs:
   include:
     - os: linux
     - os: osx
@@ -15,11 +15,10 @@ before_deploy:
 - npm run make
 deploy:
   provider: releases
-  api_key: $GITHUB_DEPLOY_TOKEN
+  token: $GITHUB_DEPLOY_TOKEN
   file_glob: true
   file:
     - "./out/make/**/*"
-  skip_cleanup: true
   draft: true
   on:
     condition: $GITHUB_DEPLOY
